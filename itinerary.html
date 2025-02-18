@@ -13,241 +13,281 @@
     rel="stylesheet"
   />
   <style>
-    /* Global Reset & Typography */
+    /* Global Reset & Basic Styling */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
     }
     body {
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #ffffff;
       color: #333;
-      background-color: #fff;
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: #0077cc;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #005fa3;
+    }
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    /* NAVIGATION BAR */
+    /* Navigation Bar */
     nav {
       position: fixed;
-      width: 100%;
       top: 0;
       left: 0;
+      width: 100%;
       background: #fff;
       border-bottom: 1px solid #eee;
-      padding: 15px 20px;
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 1000;
+      z-index: 9999;
     }
     nav .logo {
-      font-family: "Playfair Display", serif;
-      font-size: 1.6rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
       font-weight: 700;
       color: #333;
     }
     nav ul {
       list-style: none;
       display: flex;
-      gap: 20px;
+      gap: 30px;
     }
     nav ul li a {
-      color: #333;
-      text-decoration: none;
+      font-size: 1rem;
       font-weight: 500;
-      transition: color 0.3s ease;
+      color: #333;
     }
-    nav ul li a:hover {
-      color: #0077cc;
-    }
-    /* Hamburger Menu */
+    /* Hamburger Menu (Mobile) */
     .hamburger {
       display: none;
       flex-direction: column;
       cursor: pointer;
     }
     .hamburger span {
-      display: block;
       width: 25px;
       height: 3px;
-      margin: 4px;
       background: #333;
-      transition: background 0.3s ease;
+      margin: 4px 0;
+      transition: all 0.3s ease;
     }
 
-    /* HERO SECTION */
+    /* Hero Section */
     .hero {
+      position: relative;
       width: 100%;
-      height: 70vh;
+      height: 80vh;
+      background: url('https://images.unsplash.com/photo-1596464716120-5c4da1b4d4ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')
+        center center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 0 20px;
-      margin-top: 70px; /* offset fixed nav */
-      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      margin-top: 70px; /* Offset fixed nav */
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.2)
+      );
+      z-index: 1;
     }
     .hero-content {
+      position: relative;
+      z-index: 2;
       max-width: 800px;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
     }
     .hero-content h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-size: 3rem;
       margin-bottom: 20px;
-      color: #333;
     }
     .hero-content p {
       font-size: 1.2rem;
       margin-bottom: 30px;
-      color: #555;
+      color: #eee;
     }
-    .hero-content a {
+    .btn {
       display: inline-block;
+      padding: 14px 40px;
+      border-radius: 50px;
+      font-weight: 600;
       background-color: #0077cc;
       color: #fff;
-      padding: 12px 30px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
+      transition: background 0.3s ease;
     }
-    .hero-content a:hover {
+    .btn:hover {
       background-color: #005fa3;
     }
 
-    /* MAIN CONTAINER */
+    /* Main Container */
     main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
     }
-
-    /* SECTION STYLES */
     section {
-      margin-bottom: 60px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #eee;
+      margin-bottom: 80px;
     }
     section:last-child {
-      border-bottom: none;
+      margin-bottom: 40px;
     }
-    section h2 {
-      font-family: "Playfair Display", serif;
+    .section-title {
+      font-family: 'Playfair Display', serif;
       font-size: 2rem;
+      color: #222;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .subheading {
+      font-size: 1.4rem;
+      color: #444;
+      margin-bottom: 10px;
+    }
+    .section-text {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    /* Reusable Card Grid Layout */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 20px;
+      transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .card h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
       margin-bottom: 10px;
       color: #222;
     }
-    section h3 {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-      color: #444;
-    }
-    section p {
-      margin-bottom: 16px;
+    .card p {
+      font-size: 0.95rem;
       color: #555;
+      margin-bottom: 10px;
     }
-
-    /* LIST STYLES */
-    ul {
-      list-style: none;
-      padding-left: 20px;
-      margin-bottom: 16px;
-    }
-    ul li {
-      position: relative;
-      margin-bottom: 12px;
-      padding-left: 20px;
-    }
-    ul li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
+    .card a {
+      font-weight: 600;
+      font-size: 0.9rem;
       color: #0077cc;
-      font-size: 1.2rem;
+      transition: color 0.3s ease;
     }
-    ul li strong {
-      color: #222;
+    .card a:hover {
+      color: #005fa3;
     }
 
-    /* FOOTER */
+    /* Footer */
     footer {
       text-align: center;
-      font-size: 0.9rem;
-      color: #777;
-      padding: 40px 20px;
       background: #f9f9f9;
-      margin-top: 40px;
+      padding: 40px 20px;
       border-top: 1px solid #eee;
+      margin-top: 40px;
+      color: #777;
+      font-size: 0.9rem;
     }
 
-    /* MEDIA QUERIES FOR RESPONSIVE DESIGN */
+    /* Media Queries (Mobile Responsiveness) */
+    @media (max-width: 900px) {
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+    }
     @media (max-width: 768px) {
       nav {
-        flex-direction: row;
-        justify-content: space-between;
+        padding: 10px 20px;
       }
-      /* Show hamburger and hide nav links by default */
       .hamburger {
         display: flex;
       }
       nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: #fff;
         position: absolute;
         top: 60px;
         left: 0;
+        width: 100%;
+        background: #fff;
         border-top: 1px solid #eee;
+        display: none;
+        flex-direction: column;
+        gap: 0;
       }
       nav ul.active {
         display: flex;
       }
       nav ul li {
-        padding: 10px 20px;
+        border-bottom: 1px solid #eee;
+        padding: 10px 30px;
+      }
+      nav ul li:last-child {
+        border-bottom: none;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      main {
+        margin: 40px auto;
+        padding: 0 20px;
       }
       .hero {
         height: 60vh;
-        padding: 0 10px;
       }
       .hero-content h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
       .hero-content p {
         font-size: 1rem;
       }
-      .hero-content a {
-        padding: 10px 20px;
+      .btn {
         font-size: 0.9rem;
+        padding: 12px 30px;
       }
-      main {
-        margin: 20px auto;
-        padding: 10px;
+      .subheading {
+        font-size: 1.1rem;
       }
-      section h2 {
-        font-size: 1.8rem;
-      }
-      section h3 {
-        font-size: 1.2rem;
-      }
-      section p {
+      .section-text {
         font-size: 0.95rem;
-      }
-      ul {
-        padding-left: 15px;
-      }
-      ul li {
-        padding-left: 15px;
-      }
-      ul li::before {
-        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- NAVIGATION BAR -->
+  <!-- Navigation -->
   <nav>
     <div class="logo">Ultra-Lux Italy</div>
     <div class="hamburger" id="hamburger">
@@ -262,254 +302,390 @@
     </ul>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
       <h1>Ultra-Lux Itinerary for Mike and Mary</h1>
       <p>
-        Embark on a 10-day journey through Italy’s most glamorous destinations—from the serene beauty of Lake Como, to the gastronomic delights of Piedmont, and the breathtaking Amalfi Coast.
+        Experience an exclusive 10-day journey through Italy’s most glamorous destinations—from
+        the serene beauty of Lake Como, to the culinary wonders of Piedmont, and the stunning
+        Amalfi Coast.
       </p>
-      <a href="#lake-como">View Itinerary</a>
+      <a href="#lake-como" class="btn">View Itinerary</a>
     </div>
   </section>
 
-  <!-- MAIN CONTENT -->
+  <!-- Main Container -->
   <main>
     <!-- Lake Como Section -->
     <section id="lake-como">
-      <h2>Days 1–3: Lake Como</h2>
-      <h3>Lakeside Splendor & Alpine Grandeur</h3>
-      <p>
-        Cradled by the Alps and adorned with stately villas and lush gardens, Lake Como epitomizes Italian elegance. Enjoy serene boat rides, invigorating bike tours, and hikes with panoramic vistas—all in an atmosphere of refined indulgence.
+      <h2 class="section-title">Days 1–3: Lake Como</h2>
+      <h3 class="subheading">Lakeside Splendor & Alpine Grandeur</h3>
+      <p class="section-text">
+        Cradled by the Alps and adorned with stately villas and lush gardens, Lake Como epitomizes
+        Italian elegance. Enjoy serene boat rides, invigorating bike tours, and hikes with panoramic
+        vistas—all in an atmosphere of refined indulgence.
       </p>
 
-      <h3>Luxury Accommodations</h3>
-      <ul>
-        <li>
-          <strong>Grand Hotel Tremezzo:</strong> This legendary palace is celebrated for its opulent rooms, impeccable service, and stunning vistas—and is a favorite among international celebrities.
-          <br><a href="https://www.grandhoteltremezzo.com/" target="_blank">Book Grand Hotel Tremezzo</a>
-        </li>
-        <li>
-          <strong>Il Sereno Lago di Como:</strong> A modern five‑star retreat known for its contemporary design and expansive lake views, attracting the world’s elite.
-          <br><a href="https://www.ilsereno.com/" target="_blank">Book Il Sereno Lago di Como</a>
-        </li>
-        <li>
-          <strong>Villa d’Este:</strong> An iconic historic villa offering timeless elegance and unparalleled hospitality—often frequented by celebrities.
-          <br><a href="https://www.villadeste.com/" target="_blank">Book Villa d’Este</a>
-        </li>
-      </ul>
+      <!-- Luxury Accommodations -->
+      <h3 class="subheading">Luxury Accommodations</h3>
+      <div class="card-grid">
+        <div class="card">
+          <h4>Grand Hotel Tremezzo</h4>
+          <p>
+            A legendary palace renowned for its opulent rooms, impeccable service, and stunning vistas—
+            a favorite among international celebrities.
+          </p>
+          <a href="https://www.grandhoteltremezzo.com/" target="_blank">Book Now</a>
+        </div>
+        <div class="card">
+          <h4>Il Sereno Lago di Como</h4>
+          <p>
+            A modern five‑star retreat known for its contemporary design and expansive lake views,
+            attracting the world’s elite.
+          </p>
+          <a href="https://www.ilsereno.com/" target="_blank">Book Now</a>
+        </div>
+        <div class="card">
+          <h4>Villa d’Este</h4>
+          <p>
+            An iconic historic villa offering timeless elegance and unparalleled hospitality—often
+            frequented by celebrities.
+          </p>
+          <a href="https://www.villadeste.com/" target="_blank">Book Now</a>
+        </div>
+      </div>
 
-      <h3>High‑End Dining Experiences</h3>
-      <ul>
-        <li>
-          <strong>Ristorante Mistral at Grand Hotel Villa Serbelloni:</strong> Experience innovative Italian cuisine with panoramic lake views in a setting favored by discerning guests.
-          <br><a href="https://www.villaserbelloni.com/" target="_blank">Explore Ristorante Mistral</a>
-        </li>
-        <li>
-          <strong>La Veranda at Villa d’Este:</strong> Savor gourmet dishes in an exquisite ambiance that epitomizes luxury.
-          <br><a href="https://www.villadeste.com/" target="_blank">Discover La Veranda at Villa d’Este</a>
-        </li>
-        <li>
-          <strong>Il Gatto Nero:</strong> Enjoy refined cuisine with sweeping vistas of Lake Como—a hotspot for the international jet set.
-          <br><a href="https://www.ilgatonero.com/" target="_blank">Visit Il Gatto Nero</a>
-        </li>
-      </ul>
+      <!-- High-End Dining Experiences -->
+      <h3 class="subheading">High‑End Dining Experiences</h3>
+      <div class="card-grid">
+        <div class="card">
+          <h4>Ristorante Mistral</h4>
+          <p>
+            Located at Grand Hotel Villa Serbelloni, offering innovative Italian cuisine with
+            panoramic lake views.
+          </p>
+          <a href="https://www.villaserbelloni.com/" target="_blank">Learn More</a>
+        </div>
+        <div class="card">
+          <h4>La Veranda at Villa d’Este</h4>
+          <p>
+            Savor gourmet dishes in an exquisite ambiance that epitomizes luxury.
+          </p>
+          <a href="https://www.villadeste.com/" target="_blank">Learn More</a>
+        </div>
+        <div class="card">
+          <h4>Il Gatto Nero</h4>
+          <p>
+            Enjoy refined cuisine with sweeping vistas of Lake Como—a hotspot for the
+            international jet set.
+          </p>
+          <a href="https://www.ilgatonero.com/" target="_blank">Learn More</a>
+        </div>
+      </div>
 
-      <h3>Active & Healthy Experiences</h3>
-      <ul>
-        <li>
-          <strong>Guided Bike Tour Around Lake Como:</strong> Explore scenic roads and charming villages on a luxurious guided tour.
-          <br><a href="https://www.lakecomobiketours.com/" target="_blank">Book Bike Tours</a>
-        </li>
-        <li>
-          <strong>Hiking the Surrounding Hills:</strong> Enjoy invigorating hikes with panoramic alpine views.
-          <br><a href="https://www.viator.com/Lake-Como/d5207-ttd?lang=en" target="_blank">Discover Hiking Tours</a>
-        </li>
-        <li>
-          <strong>Private Boat Tour of Lake Como:</strong> Cruise the pristine waters and uncover secluded villas and coves.
-          <br><a href="https://www.lakecomoboatrental.com/" target="_blank">Book a Boat Tour</a>
-        </li>
-      </ul>
-      
-      <h3>Things to See & Other Attractions</h3>
-      <ul>
-        <li>
-          <strong><a href="https://www.villacarlotta.it/en/" target="_blank">Villa Carlotta</a>:</strong> Explore its magnificent gardens and art collections.
-        </li>
-        <li>
-          <strong><a href="https://en.wikipedia.org/wiki/Bellagio" target="_blank">Bellagio</a>:</strong> Wander the charming streets of one of Lake Como’s most picturesque towns.
-        </li>
-        <li>
-          <strong><a href="https://en.wikipedia.org/wiki/Como_Cathedral" target="_blank">Como Cathedral</a>:</strong> Admire the rich history and stunning architecture of this iconic landmark.
-        </li>
-        <li>
-          <strong><a href="https://www.viator.com/activities/Como-Lake" target="_blank">Ferry Rides</a>:</strong> Enjoy scenic journeys connecting the lake’s quaint towns.
-        </li>
-      </ul>
+      <!-- Active & Healthy Experiences -->
+      <h3 class="subheading">Active & Healthy Experiences</h3>
+      <div class="card-grid">
+        <div class="card">
+          <h4>Guided Bike Tour Around Lake Como</h4>
+          <p>
+            Explore scenic roads and charming villages on a luxurious guided tour.
+          </p>
+          <a href="https://www.lakecomobiketours.com/" target="_blank">Learn More</a>
+        </div>
+        <div class="card">
+          <h4>Hiking the Surrounding Hills</h4>
+          <p>
+            Enjoy invigorating hikes with panoramic alpine views.
+          </p>
+          <a href="https://www.viator.com/Lake-Como/d5207-ttd?lang=en" target="_blank">Learn More</a>
+        </div>
+        <div class="card">
+          <h4>Private Boat Tour of Lake Como</h4>
+          <p>
+            Cruise the pristine waters and uncover secluded villas and coves.
+          </p>
+          <a href="https://www.lakecomoboatrental.com/" target="_blank">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Things to See & Other Attractions -->
+      <h3 class="subheading">Things to See & Other Attractions</h3>
+      <div class="card-grid attractions">
+        <div class="card">
+          <h4><a href="https://www.villacarlotta.it/en/" target="_blank">Villa Carlotta</a></h4>
+          <p>Explore its magnificent gardens and art collections.</p>
+        </div>
+        <div class="card">
+          <h4><a href="https://en.wikipedia.org/wiki/Bellagio" target="_blank">Bellagio</a></h4>
+          <p>Wander the charming streets of one of Lake Como’s most picturesque towns.</p>
+        </div>
+        <div class="card">
+          <h4><a href="https://en.wikipedia.org/wiki/Como_Cathedral" target="_blank">Como Cathedral</a></h4>
+          <p>Admire the rich history and stunning architecture of this iconic landmark.</p>
+        </div>
+        <div class="card">
+          <h4><a href="https://www.viator.com/activities/Como-Lake" target="_blank">Ferry Rides</a></h4>
+          <p>Enjoy scenic journeys connecting the lake’s quaint towns.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Piedmont Section -->
     <section id="piedmont">
-      <h2>Days 4–6: Piedmont</h2>
-      <h3>The Wine & Truffle Heartland</h3>
-      <p>
-        Piedmont’s rolling vineyards, legendary Barolo wines, and celebrated truffle heritage create a sensory feast. Explore medieval towns, join exclusive culinary tours, and relax in sumptuous estates that marry history with modern luxury.
+      <h2 class="section-title">Days 4–6: Piedmont</h2>
+      <h3 class="subheading">The Wine & Truffle Heartland</h3>
+      <p class="section-text">
+        Piedmont’s rolling vineyards, legendary Barolo wines, and celebrated truffle heritage create
+        a sensory feast. Explore medieval towns, join exclusive culinary tours, and relax in
+        sumptuous estates that marry history with modern luxury.
       </p>
 
-      <h3>Luxury Accommodations</h3>
-      <ul>
-        <li>
-          <strong>Il Boscareto Resort & Spa:</strong> A 5‑star resort nestled amid the Langhe vineyards, offering world‑class spa treatments and gourmet experiences that attract celebrities.
-          <br><a href="https://www.ilboscareto.it/" target="_blank">Book Il Boscareto Resort & Spa</a>
-        </li>
-        <li>
-          <strong>Relais San Maurizio:</strong> This restored monastery exudes timeless elegance and offers breathtaking countryside views—a magnet for high-profile guests.
-          <br><a href="https://www.sanmaurizio.com/en/" target="_blank">Book Relais San Maurizio</a>
-        </li>
-        <li>
-          <strong>Castello di Guarene:</strong> A beautifully restored castle providing ultra‑luxury accommodations in a historic setting—perfect for discerning celebrities.
-          <br><a href="https://www.castellodiguarene.com/" target="_blank">Book Castello di Guarene</a>
-        </li>
-      </ul>
+      <!-- Luxury Accommodations -->
+      <h3 class="subheading">Luxury Accommodations</h3>
+      <div class="card-grid">
+        <div class="card">
+          <h4>Il Boscareto Resort & Spa</h4>
+          <p>
+            A 5‑star resort nestled amid the Langhe vineyards, offering world‑class spa treatments and
+            gourmet experiences that attract celebrities.
+          </p>
+          <a href="https://www.ilboscareto.it/" target="_blank">Book Now</a>
+        </div>
+        <div class="card">
+          <h4>Relais San Maurizio</h4>
+          <p>
+            This restored monastery exudes timeless elegance and offers breathtaking countryside
+            views—a magnet for high-profile guests.
+          </p>
+          <a href="https://www.sanmaurizio.com/en/" target="_blank">Book Now</a>
+        </div>
+        <div class="card">
+          <h4>Castello di Guarene</h4>
+          <p>
+            A beautifully restored castle providing ultra‑luxury accommodations in a historic
+            setting—perfect for discerning celebrities.
+          </p>
+          <a href="https://www.castellodiguarene.com/" target="_blank">Book Now</a>
+        </div>
+      </div>
 
-      <h3>High‑End Dining Experiences</h3>
-      <ul>
-        <li>
-          <strong>Ristorante Piazza Duomo:</strong> A Michelin‑three‑star landmark in Alba where innovative dishes celebrate the best of Piedmontese ingredients.
-          <br><a href="http://www.ristorantepiazzaduomo.com/" target="_blank">Explore Ristorante Piazza Duomo</a>
-        </li>
-        <li>
-          <strong>La Ciau del Tornavento:</strong> Enjoy cutting‑edge cuisine paired with panoramic vineyard views in a setting popular with the elite.
-          <br><a href="https://www.tornavento.com/restaurant" target="_blank">Visit La Ciau del Tornavento</a>
-        </li>
-        <li>
-          <strong>Tre Galline:</strong> A historic institution serving refined traditional Piedmontese fare that appeals to high‑profile gourmets.
-          <br><a href="https://www.tregalline.it/" target="_blank">Discover Tre Galline</a>
-        </li>
-      </ul>
+      <!-- High-End Dining Experiences -->
+      <h3 class="subheading">High‑End Dining Experiences</h3>
+      <div class="card-grid">
+        <div class="card">
+          <h4>Ristorante Piazza Duomo</h4>
+          <p>
+            A Michelin‑three‑star landmark in Alba where innovative dishes celebrate the best of
+            Piedmontese ingredients.
+          </p>
+          <a href="http://www.ristorantepiazzaduomo.com/" target="_blank">Learn More</a>
+        </div>
+        <div class="card">
+          <h4>La Ciau del Tornavento</h4>
+          <p>
+            Enjoy cutting‑edge cuisine paired with panoramic vineyard views in a setting popular with
+            the elite.
+          </p>
+          <a href="https://www.tornavento.com/restaurant" target="_blank">Learn More</a>
+        </div>
+        <div class="card">
+          <h4>Tre Galline</h4>
+          <p>
+            A historic institution serving refined traditional Piedmontese fare that appeals to
+            high‑profile gourmets.
+          </p>
+          <a href="https://www.tregalline.it/" target="_blank">Learn More</a>
+        </div>
+      </div>
 
-      <h3>Active & Healthy Experiences</h3>
-      <ul>
-        <li>
-          <strong>Wine & Truffle Tour in Alba:</strong> Join guided tours through lush vineyards and truffle-rich woodlands with exquisite tastings.
-          <br><a href="https://www.viator.com/Alba/d5213-ttd" target="_blank">Explore Wine & Truffle Tours</a>
-        </li>
-        <li>
-          <strong>Cycling Through the Langhe Vineyards:</strong> Enjoy scenic cycling tours along rolling vineyard routes and medieval villages.
-          <br><a href="https://www.getyourguide.com/s/?q=piedmont%20cycling" target="_blank">Book a Cycling Tour</a>
-        </li>
-        <li>
-          <strong>Hiking the Scenic Langhe Hills:</strong> Take leisurely hikes with breathtaking views of the picturesque countryside.
-          <br><a href="https://www.getyourguide.com/s/?q=piedmont%20hiking" target="_blank">Discover Hiking Experiences</a>
-        </li>
-      </ul>
-      
-      <h3>Things to See & Other Attractions</h3>
-      <ul>
-        <li>
-          <strong><a href="https://en.wikipedia.org/wiki/Alba,_Piedmont" target="_blank">Alba</a>:</strong> Stroll through medieval streets and vibrant local markets famed for their truffles.
-        </li>
-        <li>
-          <strong><a href="https://en.wikipedia.org/wiki/Barolo" target="_blank">Barolo & La Morra</a>:</strong> Enjoy scenic drives through rolling vineyards and historic wineries.
-        </li>
-        <li>
-          <strong><a href="https://www.grinzane-cavour.it/en/" target="_blank">Castello di Grinzane Cavour</a>:</strong> Discover the rich history behind Piedmont’s celebrated wine heritage.
-        </li>
-        <li>
-          <strong><a href="https://www.visitpiemonte.com/en/festivals" target="_blank">Local Festivals</a>:</strong> Experience cultural events celebrating authentic Piedmontese cuisine and traditions.
-        </li>
-      </ul>
+      <!-- Active & Healthy Experiences -->
+      <h3 class="subheading">Active & Healthy Experiences</h3>
+      <div class="card-grid">
+        <div class="card">
+          <h4>Wine & Truffle Tour in Alba</h4>
+          <p>
+            Join guided tours through lush vineyards and truffle-rich woodlands with exquisite
+            tastings.
+          </p>
+          <a href="https://www.viator.com/Alba/d5213-ttd" target="_blank">Learn More</a>
+        </div>
+        <div class="card">
+          <h4>Cycling Through the Langhe Vineyards</h4>
+          <p>
+            Enjoy scenic cycling tours along rolling vineyard routes and medieval villages.
+          </p>
+          <a href="https://www.getyourguide.com/s/?q=piedmont%20cycling" target="_blank">Learn More</a>
+        </div>
+        <div class="card">
+          <h4>Hiking the Scenic Langhe Hills</h4>
+          <p>
+            Take leisurely hikes with breathtaking views of the picturesque countryside.
+          </p>
+          <a href="https://www.getyourguide.com/s/?q=piedmont%20hiking" target="_blank">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Things to See & Other Attractions -->
+      <h3 class="subheading">Things to See & Other Attractions</h3>
+      <div class="card-grid attractions">
+        <div class="card">
+          <h4><a href="https://en.wikipedia.org/wiki/Alba,_Piedmont" target="_blank">Alba</a></h4>
+          <p>Stroll through medieval streets and vibrant local markets famed for their truffles.</p>
+        </div>
+        <div class="card">
+          <h4><a href="https://en.wikipedia.org/wiki/Barolo" target="_blank">Barolo & La Morra</a></h4>
+          <p>Enjoy scenic drives through rolling vineyards and historic wineries.</p>
+        </div>
+        <div class="card">
+          <h4><a href="https://www.grinzane-cavour.it/en/" target="_blank">Castello di Grinzane Cavour</a></h4>
+          <p>Discover the rich history behind Piedmont’s celebrated wine heritage.</p>
+        </div>
+        <div class="card">
+          <h4><a href="https://www.visitpiemonte.com/en/festivals" target="_blank">Local Festivals</a></h4>
+          <p>Experience cultural events celebrating authentic Piedmontese cuisine and traditions.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Amalfi Coast Section -->
     <section id="amalfi">
-      <h2>Days 7–10: Amalfi Coast</h2>
-      <h3>Coastal Splendor & Gourmet Delights</h3>
-      <p>
-        Famed for its dramatic cliffs, sparkling turquoise waters, and charming villages, the Amalfi Coast is a feast for the senses. Wander steep, narrow streets, indulge in Mediterranean culinary masterpieces, and soak in breathtaking sea views—all while staying in ultra‑luxurious accommodations.
+      <h2 class="section-title">Days 7–10: Amalfi Coast</h2>
+      <h3 class="subheading">Coastal Splendor & Gourmet Delights</h3>
+      <p class="section-text">
+        Famed for its dramatic cliffs, sparkling turquoise waters, and charming villages, the Amalfi
+        Coast is a feast for the senses. Wander steep, narrow streets, indulge in Mediterranean
+        culinary masterpieces, and soak in breathtaking sea views—all while staying in ultra‑luxurious
+        accommodations.
       </p>
 
-      <h3>Luxury Accommodations</h3>
-      <ul>
-        <li>
-          <strong>Le Sirenuse, Positano:</strong> With elegantly appointed rooms and mesmerizing Mediterranean views, this iconic hotel is a celebrity favorite.
-          <br><a href="https://sirenuse.it/" target="_blank">Book Le Sirenuse</a>
-        </li>
-        <li>
-          <strong>Belmond Hotel Caruso, Ravello:</strong> A historic palace featuring modern luxuries and a spellbinding infinity pool, frequently visited by the rich and famous.
-          <br><a href="https://www.belmond.com/hotels/europe/italy/belmond-hotel-caruso/" target="_blank">Book Belmond Hotel Caruso</a>
-        </li>
-        <li>
-          <strong>Palazzo Avino, Ravello:</strong> This restored 12th‑century villa offers lavish rooms, a world‑class spa, and award‑winning dining in an atmosphere that attracts high‑profile guests.
-          <br><a href="https://www.palazzoavino.com/" target="_blank">Book Palazzo Avino</a>
-        </li>
-        <li>
-          <strong>Villa TreVille:</strong> An exclusive hotel known for its luxurious accommodations, breathtaking views, and refined service—ensuring privacy and comfort for celebrities.
-          <br><a href="https://www.villatreville.com/" target="_blank">Book Villa TreVille</a>
-        </li>
-      </ul>
+      <!-- Luxury Accommodations -->
+      <h3 class="subheading">Luxury Accommodations</h3>
+      <div class="card-grid">
+        <div class="card">
+          <h4>Le Sirenuse, Positano</h4>
+          <p>
+            With elegantly appointed rooms and mesmerizing Mediterranean views, this iconic hotel is
+            a celebrity favorite.
+          </p>
+          <a href="https://sirenuse.it/" target="_blank">Book Now</a>
+        </div>
+        <div class="card">
+          <h4>Belmond Hotel Caruso, Ravello</h4>
+          <p>
+            A historic palace featuring modern luxuries and a spellbinding infinity pool, frequently
+            visited by the rich and famous.
+          </p>
+          <a href="https://www.belmond.com/hotels/europe/italy/belmond-hotel-caruso/" target="_blank">Book Now</a>
+        </div>
+        <div class="card">
+          <h4>Palazzo Avino, Ravello</h4>
+          <p>
+            This restored 12th‑century villa offers lavish rooms, a world‑class spa, and award‑winning
+            dining in an atmosphere that attracts high‑profile guests.
+          </p>
+          <a href="https://www.palazzoavino.com/" target="_blank">Book Now</a>
+        </div>
+        <div class="card">
+          <h4>Villa TreVille</h4>
+          <p>
+            An exclusive hotel known for its luxurious accommodations, breathtaking views, and refined
+            service—ensuring privacy and comfort for celebrities.
+          </p>
+          <a href="https://www.villatreville.com/" target="_blank">Book Now</a>
+        </div>
+      </div>
 
-      <h3>High‑End Dining Experiences</h3>
-      <ul>
-        <li>
-          <strong>La Sponda at Le Sirenuse:</strong> A Michelin‑starred dining experience featuring candlelit elegance, perfect for a celebrity dinner.
-          <br><a href="https://sirenuse.it/en/dining/la-sponda" target="_blank">Discover La Sponda</a>
-        </li>
-        <li>
-          <strong>Rossellinis at Palazzo Avino:</strong> Indulge in innovative Mediterranean dishes crafted with the freshest local ingredients.
-          <br><a href="https://www.palazzoavino.com/" target="_blank">Explore Rossellinis</a>
-        </li>
-        <li>
-          <strong>La Caravella, Amalfi:</strong> Enjoy refined coastal cuisine in a historic Michelin‑starred setting that appeals to the elite.
-          <br><a href="https://www.lacaravella.it/" target="_blank">Visit La Caravella</a>
-        </li>
-      </ul>
+      <!-- High-End Dining Experiences -->
+      <h3 class="subheading">High‑End Dining Experiences</h3>
+      <div class="card-grid">
+        <div class="card">
+          <h4>La Sponda at Le Sirenuse</h4>
+          <p>
+            A Michelin‑starred dining experience featuring candlelit elegance, perfect for a
+            celebrity dinner.
+          </p>
+          <a href="https://sirenuse.it/en/dining/la-sponda" target="_blank">Learn More</a>
+        </div>
+        <div class="card">
+          <h4>Rossellinis at Palazzo Avino</h4>
+          <p>
+            Indulge in innovative Mediterranean dishes crafted with the freshest local ingredients.
+          </p>
+          <a href="https://www.palazzoavino.com/" target="_blank">Learn More</a>
+        </div>
+        <div class="card">
+          <h4>La Caravella, Amalfi</h4>
+          <p>
+            Enjoy refined coastal cuisine in a historic Michelin‑starred setting that appeals to
+            the elite.
+          </p>
+          <a href="https://www.lacaravella.it/" target="_blank">Learn More</a>
+        </div>
+      </div>
 
-      <h3>Active & Healthy Experiences</h3>
-      <ul>
-        <li>
-          <strong>Private Amalfi Coast Boat Tour:</strong> Discover hidden coves and secluded beaches on an exclusive, personalized tour.
-          <br><a href="https://www.viator.com/Amalfi-Coast/d5269-ttd" target="_blank">Book a Boat Tour</a>
-        </li>
-        <li>
-          <strong>Hiking the Path of the Gods:</strong> Trek the legendary Sentiero degli Dei for awe‑inspiring coastal views.
-          <br><a href="https://www.viator.com/tours/Amalfi-Coast/Path-of-the-Gods-Hiking-Tour/d5269-16057P1" target="_blank">Explore the Path of the Gods</a>
-        </li>
-        <li>
-          <strong>Amalfi Coast Cooking & Lemon Grove Tour:</strong> Participate in a hands‑on culinary class amid fragrant lemon groves for an authentic taste of the coast.
-          <br><a href="https://www.getyourguide.com/s/?q=amalfi%20cooking%20class" target="_blank">Discover Cooking Classes</a>
-        </li>
-      </ul>
-      
-      <h3>Things to See & Other Attractions</h3>
-      <ul>
-        <li>
-          <strong><a href="https://en.wikipedia.org/wiki/Positano" target="_blank">Positano</a>:</strong> Stroll the narrow, colorful streets and take in stunning cliffside views.
-        </li>
-        <li>
-          <strong><a href="https://en.wikipedia.org/wiki/Amalfi_Cathedral" target="_blank">Amalfi Cathedral</a>:</strong> Explore this historic, beautifully designed landmark.
-        </li>
-        <li>
-          <strong><a href="https://en.wikipedia.org/wiki/Ravello" target="_blank">Ravello</a>:</strong> Visit charming gardens like Villa Rufolo and Villa Cimbrone for breathtaking vistas.
-        </li>
-        <li>
-          <strong><a href="https://en.wikipedia.org/wiki/Amalfi_Coast" target="_blank">Coastal Drives</a>:</strong> Enjoy scenic routes along the cliffside and uncover hidden coves.
-        </li>
-      </ul>
+      <!-- Active & Healthy Experiences -->
+      <h3 class="subheading">Active & Healthy Experiences</h3>
+      <div class="card-grid">
+        <div class="card">
+          <h4>Private Amalfi Coast Boat Tour</h4>
+          <p>
+            Discover hidden coves and secluded beaches on an exclusive, personalized tour.
+          </p>
+          <a href="https://www.viator.com/Amalfi-Coast/d5269-ttd" target="_blank">Learn More</a>
+        </div>
+        <div class="card">
+          <h4>Hiking the Path of the Gods</h4>
+          <p>
+            Trek the legendary Sentiero degli Dei for awe‑inspiring coastal views.
+          </p>
+          <a href="https://www.viator.com/tours/Amalfi-Coast/Path-of-the-Gods-Hiking-Tour/d5269-16057P1" target="_blank"
+            >Learn More</a
+          >
+        </div>
+        <div class="card">
+          <h4>Amalfi Coast Cooking & Lemon Grove Tour</h4>
+          <p>
+            Participate in a hands‑on culinary class amid fragrant lemon groves for an authentic
+            taste of the coast.
+          </p>
+          <a href="https://www.getyourguide.com/s/?q=amalfi%20cooking%20class" target="_blank">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Things to See & Other Attractions -->
+      <h3 class="subheading">Things to See & Other Attractions</h3>
+      <div class="card-grid attractions">
+        <div class="card">
+          <h4><a href="https://en.wikipedia.org/wiki/Positano" target="_blank">Positano</a></h4>
+          <p>Stroll the narrow, colorful streets and take in stunning cliffside views.</p>
+        </div>
+        <div class="card">
+          <h4><a href="https://en.wikipedia.org/wiki/Amalfi_Cathedral" target="_blank">Amalfi Cathedral</a></h4>
+          <p>Explore this historic, beautifully designed landmark.</p>
+        </div>
+        <div class="card">
+          <h4><a href="https://en.wikipedia.org/wiki/Ravello" target="_blank">Ravello</a></h4>
+          <p>Visit charming gardens like Villa Rufolo and Villa Cimbrone for breathtaking vistas.</p>
+        </div>
+        <div class="card">
+          <h4><a href="https://en.wikipedia.org/wiki/Amalfi_Coast" target="_blank">Coastal Drives</a></h4>
+          <p>Enjoy scenic routes along the cliffside and uncover hidden coves.</p>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Ultra-Lux Italy Itinerary for Mike and Mary.</p>
-    <p>All rights reserved.</p>
+    <p>&copy; 2025 Ultra-Lux Italy Itinerary for Mike and Mary. All rights reserved.</p>
   </footer>
 
   <!-- JavaScript for Hamburger Menu -->
   <script>
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
-
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
