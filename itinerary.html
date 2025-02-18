@@ -1,20 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="description" content="Ultra-Lux Italy Itinerary for Mike and Mary" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ultra-Lux Italy Itinerary for Mike and Mary</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
   <style>
+    /* Global Reset & Typography */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
+      font-family: "Montserrat", sans-serif;
+      color: #333;
+      background-color: #fff;
       line-height: 1.6;
-      background-color: #f7f7f7;
+    }
+
+    /* NAVIGATION BAR */
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    nav .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.6rem;
+      font-weight: 700;
       color: #333;
     }
-    h1, h2, h3 {
-      color: #2a2a2a;
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
     }
+    nav ul li a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #0077cc;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      width: 100%;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      margin-top: 70px; /* to offset fixed nav */
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    }
+    .hero-content {
+      max-width: 800px;
+    }
+    .hero-content h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #555;
+    }
+    .hero-content a {
+      display: inline-block;
+      background-color: #0077cc;
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .hero-content a:hover {
+      background-color: #005fa3;
+    }
+
+    /* MAIN CONTAINER */
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    /* SECTION STYLES */
+    section {
+      margin-bottom: 60px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    section:last-child {
+      border-bottom: none;
+    }
+    section h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      color: #444;
+    }
+    section p {
+      margin-bottom: 16px;
+      color: #555;
+    }
+
+    /* LIST STYLES */
+    ul {
+      list-style: none;
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    ul li {
+      position: relative;
+      margin-bottom: 12px;
+      padding-left: 20px;
+    }
+    ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #0077cc;
+      font-size: 1.2rem;
+    }
+    ul li strong {
+      color: #222;
+    }
+
+    /* LINKS */
     a {
       color: #0077cc;
       text-decoration: none;
@@ -22,193 +164,219 @@
     a:hover {
       text-decoration: underline;
     }
-    .section {
-      background: #fff;
-      padding: 20px;
-      margin-bottom: 40px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    ul {
-      list-style-type: disc;
-      margin-left: 20px;
-    }
+
+    /* FOOTER */
     footer {
       text-align: center;
-      font-size: 0.9em;
-      color: #666;
+      font-size: 0.9rem;
+      color: #777;
+      padding: 40px 20px;
+      background: #f9f9f9;
       margin-top: 40px;
+      border-top: 1px solid #eee;
     }
   </style>
 </head>
 <body>
-  <h1>Ultra-Lux Italy Itinerary for Mike and Mary</h1>
-  <p>Welcome Mike and Mary! Enjoy this 10-day journey through Italy, featuring ultra-luxurious travel experiences in Lake Como, Piedmont, and the Amalfi Coast. This itinerary is filled with world-class accommodations, gourmet dining, and active, unforgettable experiences.</p>
-  
-  <div class="section">
-    <h2>Days 1–3: Lake Como – Lakeside Splendor & Alpine Grandeur</h2>
-    <h3>Why Lake Como?</h3>
-    <p>Cradled by the Alps and adorned with stately villas and lush gardens, Lake Como epitomizes Italian elegance. Enjoy serene boat rides, invigorating bike tours along the shore, and hikes with panoramic vistas—all set in an atmosphere of refined indulgence.</p>
-    
-    <h3>Luxury Accommodations</h3>
+  <!-- NAVIGATION BAR -->
+  <nav>
+    <div class="logo">Ultra-Lux Italy</div>
     <ul>
-      <li>
-        <strong>Grand Hotel Tremezzo:</strong> A legendary palace on the lake’s edge celebrated for its opulent rooms, impeccable service, and stunning vistas over Lake Como.<br>
-        <a href="https://www.grandhoteltremezzo.com/" target="_blank">Book Grand Hotel Tremezzo</a>
-      </li>
-      <li>
-        <strong>Il Sereno Lago di Como:</strong> A modern five‑star retreat offering contemporary design, expansive lake views, and an ambiance of understated luxury.<br>
-        <a href="https://www.ilsereno.com/" target="_blank">Book Il Sereno Lago di Como</a>
-      </li>
-      <li>
-        <strong>Villa d’Este:</strong> Set in a historic villa surrounded by pristine gardens, this icon of timeless elegance delivers unparalleled Italian hospitality.<br>
-        <a href="https://www.villadeste.com/" target="_blank">Book Villa d’Este</a>
-      </li>
+      <li><a href="#lake-como">Lake Como</a></li>
+      <li><a href="#piedmont">Piedmont</a></li>
+      <li><a href="#amalfi">Amalfi Coast</a></li>
     </ul>
-    
-    <h3>High‑End Dining Experiences</h3>
-    <ul>
-      <li>
-        <strong>Ristorante Mistral at Grand Hotel Villa Serbelloni:</strong> Indulge in innovative Italian cuisine paired with panoramic lake views at this Michelin‑starred dining destination.<br>
-        <a href="https://www.villaserbelloni.com/" target="_blank">Explore Ristorante Mistral</a>
-      </li>
-      <li>
-        <strong>La Veranda at Villa d’Este:</strong> Savor gourmet dishes in an exquisite setting that perfectly complements the serene lakeside panorama.<br>
-        <a href="https://www.villadeste.com/" target="_blank">Discover La Veranda at Villa d’Este</a>
-      </li>
-      <li>
-        <strong>Il Gatto Nero:</strong> Perched above Cernobbio, this celebrated restaurant offers refined cuisine with sweeping vistas of Lake Como.<br>
-        <a href="https://www.ilgatonero.com/" target="_blank">Visit Il Gatto Nero</a>
-      </li>
-    </ul>
-    
-    <h3>Active & Healthy Experiences</h3>
-    <ul>
-      <li>
-        <strong>Guided Bike Tour Around Lake Como:</strong> Cycle along scenic lakeside roads and charming villages with a guided tour showcasing the region’s natural beauty.<br>
-        <a href="https://www.lakecomobiketours.com/" target="_blank">Book Lake Como Bike Tours</a>
-      </li>
-      <li>
-        <strong>Hiking the Surrounding Hills:</strong> Embark on invigorating hikes offering panoramic views of the lake and Alps—a perfect way to reconnect with nature.<br>
-        <a href="https://www.viator.com/Lake-Como/d5207-ttd?lang=en" target="_blank">Discover Lake Como Hiking Tours</a>
-      </li>
-      <li>
-        <strong>Private Boat Tour of Lake Como:</strong> Cruise the shimmering waters on a bespoke boat tour that reveals secluded villas and hidden coves.<br>
-        <a href="https://www.lakecomoboatrental.com/" target="_blank">Book a Lake Como Boat Tour</a>
-      </li>
-    </ul>
-  </div>
-  
-  <div class="section">
-    <h2>Days 4–6: Piedmont – The Wine & Truffle Heartland</h2>
-    <h3>Why Piedmont?</h3>
-    <p>Piedmont’s rolling vineyards, legendary Barolo wines, and celebrated truffle heritage create a sensory feast for gourmands and connoisseurs. Explore medieval towns, join exclusive culinary tours, and relax in sumptuous estates that marry history with modern luxury.</p>
-    
-    <h3>Luxury Accommodations</h3>
-    <ul>
-      <li>
-        <strong>Il Boscareto Resort & Spa:</strong> Nestled amid the Langhe vineyards, this 5‑star resort offers sumptuous suites, a world‑class spa, and gourmet experiences in an enchanting setting.<br>
-        <a href="https://www.ilboscareto.it/" target="_blank">Book Il Boscareto Resort & Spa</a>
-      </li>
-      <li>
-        <strong>Relais San Maurizio:</strong> Set in a restored monastery, this Relais & Châteaux property exudes timeless elegance and breathtaking countryside views.<br>
-        <a href="https://www.sanmaurizio.com/en/" target="_blank">Book Relais San Maurizio</a>
-      </li>
-      <li>
-        <strong>Castello di Guarene:</strong> Experience centuries‑old history reimagined as ultra‑luxury accommodations in this beautifully restored castle amidst rolling landscapes.<br>
-        <a href="https://www.castellodiguarene.com/" target="_blank">Book Castello di Guarene</a>
-      </li>
-    </ul>
-    
-    <h3>High‑End Dining Experiences</h3>
-    <ul>
-      <li>
-        <strong>Ristorante Piazza Duomo:</strong> A Michelin‑three‑star dining landmark in Alba where Chef Enrico Crippa’s creations celebrate the very best of Piedmontese ingredients.<br>
-        <a href="http://www.ristorantepiazzaduomo.com/" target="_blank">Explore Ristorante Piazza Duomo</a>
-      </li>
-      <li>
-        <strong>La Ciau del Tornavento:</strong> Perched amidst the vineyards of Treiso, this restaurant offers panoramic views and innovative dishes that are as visually stunning as they are delicious.<br>
-        <a href="https://www.tornavento.com/restaurant" target="_blank">Visit La Ciau del Tornavento</a>
-      </li>
-      <li>
-        <strong>Tre Galline:</strong> A historic institution in Alba, offering refined takes on traditional Piedmontese fare in an atmosphere of understated elegance.<br>
-        <a href="https://www.tregalline.it/" target="_blank">Discover Tre Galline</a>
-      </li>
-    </ul>
-    
-    <h3>Active & Healthy Experiences</h3>
-    <ul>
-      <li>
-        <strong>Wine & Truffle Tour in Alba:</strong> Embark on an exclusive guided tour through vineyards and truffle-rich woodlands—with tastings and insider culinary insights.<br>
-        <a href="https://www.viator.com/Alba/d5213-ttd" target="_blank">Explore Wine & Truffle Tours in Alba</a>
-      </li>
-      <li>
-        <strong>Cycling Through the Langhe Vineyards:</strong> Enjoy a guided cycling tour that takes you along scenic vineyard routes and through quaint medieval villages.<br>
-        <a href="https://www.getyourguide.com/s/?q=piedmont%20cycling" target="_blank">Book a Piedmont Cycling Tour</a>
-      </li>
-      <li>
-        <strong>Hiking the Scenic Langhe Hills:</strong> Discover well‑marked trails offering breathtaking vistas of the rolling countryside—perfect for a leisurely yet invigorating hike.<br>
-        <a href="https://www.getyourguide.com/s/?q=piedmont%20hiking" target="_blank">Discover Piedmont Hiking Experiences</a>
-      </li>
-    </ul>
-  </div>
-  
-  <div class="section">
-    <h2>Days 7–10: Amalfi Coast – Coastal Splendor & Gourmet Delights</h2>
-    <h3>Why the Amalfi Coast?</h3>
-    <p>Famed for its dramatic cliffs, sparkling turquoise waters, and charming villages, the Amalfi Coast is a feast for the senses. Wander steep, narrow streets in Positano and Ravello, indulge in Mediterranean culinary masterpieces, and soak in breathtaking sea views—all while staying in ultra‑luxurious accommodations.</p>
-    
-    <h3>Luxury Accommodations</h3>
-    <ul>
-      <li>
-        <strong>Le Sirenuse, Positano:</strong> An icon of the Amalfi Coast, Le Sirenuse offers elegantly appointed rooms, mesmerizing views over the Mediterranean, and impeccable service.<br>
-        <a href="https://sirenuse.it/" target="_blank">Book Le Sirenuse</a>
-      </li>
-      <li>
-        <strong>Belmond Hotel Caruso, Ravello:</strong> Perched atop a cliff with panoramic vistas, this historic palace fuses centuries‑old charm with modern luxuries and a spellbinding infinity pool.<br>
-        <a href="https://www.belmond.com/hotels/europe/italy/belmond-hotel-caruso/" target="_blank">Book Belmond Hotel Caruso</a>
-      </li>
-      <li>
-        <strong>Palazzo Avino, Ravello:</strong> A restored 12th‑century villa offering lavish rooms, a world‑class spa, and award‑winning dining—all set against the stunning Amalfi backdrop.<br>
-        <a href="https://www.palazzoavino.com/" target="_blank">Book Palazzo Avino</a>
-      </li>
-    </ul>
-    
-    <h3>High‑End Dining Experiences</h3>
-    <ul>
-      <li>
-        <strong>La Sponda at Le Sirenuse:</strong> Enjoy a Michelin‑starred dining experience where every dish is illuminated by the warm glow of candlelight against a breathtaking Positano vista.<br>
-        <a href="https://sirenuse.it/en/dining/la-sponda" target="_blank">Discover La Sponda</a>
-      </li>
-      <li>
-        <strong>Rossellinis at Palazzo Avino:</strong> Experience culinary brilliance with innovative Mediterranean dishes that highlight the region’s freshest local ingredients.<br>
-        <a href="https://www.palazzoavino.com/" target="_blank">Explore Rossellinis at Palazzo Avino</a>
-      </li>
-      <li>
-        <strong>La Caravella, Amalfi:</strong> A historic Michelin‑starred restaurant renowned for its refined coastal cuisine and elegant ambiance in the heart of Amalfi.<br>
-        <a href="https://www.lacaravella.it/" target="_blank">Visit La Caravella</a>
-      </li>
-    </ul>
-    
-    <h3>Active & Healthy Experiences</h3>
-    <ul>
-      <li>
-        <strong>Private Amalfi Coast Boat Tour:</strong> Discover hidden coves and secluded beaches on a personalized boat tour along the stunning Amalfi coastline.<br>
-        <a href="https://www.viator.com/Amalfi-Coast/d5269-ttd" target="_blank">Book an Amalfi Coast Boat Tour</a>
-      </li>
-      <li>
-        <strong>Hiking the Path of the Gods:</strong> Trek along the legendary Sentiero degli Dei for awe‑inspiring coastal views and an invigorating outdoor adventure.<br>
-        <a href="https://www.viator.com/tours/Amalfi-Coast/Path-of-the-Gods-Hiking-Tour/d5269-16057P1" target="_blank">Explore the Path of the Gods</a>
-      </li>
-      <li>
-        <strong>Amalfi Coast Cooking & Lemon Grove Tour:</strong> Engage in a hands‑on culinary class set amidst fragrant lemon groves where you’ll master traditional dishes with a modern twist.<br>
-        <a href="https://www.getyourguide.com/s/?q=amalfi%20cooking%20class" target="_blank">Discover Amalfi Cooking Classes</a>
-      </li>
-    </ul>
-  </div>
-  
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Ultra-Lux Itinerary for Mike and Mary</h1>
+      <p>
+        Embark on a 10-day journey through Italy’s most glamorous destinations—from the serene beauty of Lake Como, to the gastronomic delights of Piedmont, and the breathtaking Amalfi Coast.
+      </p>
+      <a href="#lake-como">View Itinerary</a>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- Lake Como Section -->
+    <section id="lake-como">
+      <h2>Days 1–3: Lake Como</h2>
+      <h3>Lakeside Splendor & Alpine Grandeur</h3>
+      <p>
+        Cradled by the Alps and adorned with stately villas and lush gardens, Lake Como epitomizes Italian elegance. Enjoy serene boat rides, invigorating bike tours, and hikes with panoramic vistas—all in an atmosphere of refined indulgence.
+      </p>
+
+      <h3>Luxury Accommodations</h3>
+      <ul>
+        <li>
+          <strong>Grand Hotel Tremezzo:</strong> A legendary palace celebrated for its opulent rooms, impeccable service, and stunning vistas.
+          <br><a href="https://www.grandhoteltremezzo.com/" target="_blank">Book Grand Hotel Tremezzo</a>
+        </li>
+        <li>
+          <strong>Il Sereno Lago di Como:</strong> A modern five‑star retreat offering contemporary design and expansive lake views.
+          <br><a href="https://www.ilsereno.com/" target="_blank">Book Il Sereno Lago di Como</a>
+        </li>
+        <li>
+          <strong>Villa d’Este:</strong> A historic villa delivering timeless elegance and unparalleled hospitality.
+          <br><a href="https://www.villadeste.com/" target="_blank">Book Villa d’Este</a>
+        </li>
+      </ul>
+
+      <h3>High‑End Dining Experiences</h3>
+      <ul>
+        <li>
+          <strong>Ristorante Mistral at Grand Hotel Villa Serbelloni:</strong> Innovative Italian cuisine with panoramic lake views.
+          <br><a href="https://www.villaserbelloni.com/" target="_blank">Explore Ristorante Mistral</a>
+        </li>
+        <li>
+          <strong>La Veranda at Villa d’Este:</strong> Gourmet dishes in an exquisite setting.
+          <br><a href="https://www.villadeste.com/" target="_blank">Discover La Veranda at Villa d’Este</a>
+        </li>
+        <li>
+          <strong>Il Gatto Nero:</strong> Refined cuisine with sweeping vistas of Lake Como.
+          <br><a href="https://www.ilgatonero.com/" target="_blank">Visit Il Gatto Nero</a>
+        </li>
+      </ul>
+
+      <h3>Active & Healthy Experiences</h3>
+      <ul>
+        <li>
+          <strong>Guided Bike Tour Around Lake Como:</strong> Explore scenic roads and charming villages.
+          <br><a href="https://www.lakecomobiketours.com/" target="_blank">Book Bike Tours</a>
+        </li>
+        <li>
+          <strong>Hiking the Surrounding Hills:</strong> Invigorating hikes with panoramic alpine views.
+          <br><a href="https://www.viator.com/Lake-Como/d5207-ttd?lang=en" target="_blank">Discover Hiking Tours</a>
+        </li>
+        <li>
+          <strong>Private Boat Tour of Lake Como:</strong> Cruise the waters to discover secluded villas and coves.
+          <br><a href="https://www.lakecomoboatrental.com/" target="_blank">Book a Boat Tour</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Piedmont Section -->
+    <section id="piedmont">
+      <h2>Days 4–6: Piedmont</h2>
+      <h3>The Wine & Truffle Heartland</h3>
+      <p>
+        Piedmont’s rolling vineyards, legendary Barolo wines, and celebrated truffle heritage create a sensory feast. Explore medieval towns, join exclusive culinary tours, and relax in sumptuous estates that marry history with modern luxury.
+      </p>
+
+      <h3>Luxury Accommodations</h3>
+      <ul>
+        <li>
+          <strong>Il Boscareto Resort & Spa:</strong> A 5‑star resort nestled amid the Langhe vineyards with a world‑class spa and gourmet experiences.
+          <br><a href="https://www.ilboscareto.it/" target="_blank">Book Il Boscareto Resort & Spa</a>
+        </li>
+        <li>
+          <strong>Relais San Maurizio:</strong> A restored monastery exuding timeless elegance and breathtaking countryside views.
+          <br><a href="https://www.sanmaurizio.com/en/" target="_blank">Book Relais San Maurizio</a>
+        </li>
+        <li>
+          <strong>Castello di Guarene:</strong> A beautifully restored castle offering ultra‑luxury accommodations in a historic setting.
+          <br><a href="https://www.castellodiguarene.com/" target="_blank">Book Castello di Guarene</a>
+        </li>
+      </ul>
+
+      <h3>High‑End Dining Experiences</h3>
+      <ul>
+        <li>
+          <strong>Ristorante Piazza Duomo:</strong> A Michelin‑three‑star landmark in Alba showcasing the best of Piedmontese ingredients.
+          <br><a href="http://www.ristorantepiazzaduomo.com/" target="_blank">Explore Ristorante Piazza Duomo</a>
+        </li>
+        <li>
+          <strong>La Ciau del Tornavento:</strong> Innovative dishes paired with panoramic vineyard views.
+          <br><a href="https://www.tornavento.com/restaurant" target="_blank">Visit La Ciau del Tornavento</a>
+        </li>
+        <li>
+          <strong>Tre Galline:</strong> A historic institution serving refined traditional Piedmontese fare.
+          <br><a href="https://www.tregalline.it/" target="_blank">Discover Tre Galline</a>
+        </li>
+      </ul>
+
+      <h3>Active & Healthy Experiences</h3>
+      <ul>
+        <li>
+          <strong>Wine & Truffle Tour in Alba:</strong> Guided tours through vineyards and truffle-rich woodlands with tastings.
+          <br><a href="https://www.viator.com/Alba/d5213-ttd" target="_blank">Explore Wine & Truffle Tours</a>
+        </li>
+        <li>
+          <strong>Cycling Through the Langhe Vineyards:</strong> Scenic cycling tours along vineyard routes and medieval villages.
+          <br><a href="https://www.getyourguide.com/s/?q=piedmont%20cycling" target="_blank">Book a Cycling Tour</a>
+        </li>
+        <li>
+          <strong>Hiking the Scenic Langhe Hills:</strong> Leisurely hikes with breathtaking countryside vistas.
+          <br><a href="https://www.getyourguide.com/s/?q=piedmont%20hiking" target="_blank">Discover Hiking Experiences</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Amalfi Coast Section -->
+    <section id="amalfi">
+      <h2>Days 7–10: Amalfi Coast</h2>
+      <h3>Coastal Splendor & Gourmet Delights</h3>
+      <p>
+        Famed for dramatic cliffs, sparkling turquoise waters, and charming villages, the Amalfi Coast is a feast for the senses. Wander steep, narrow streets, indulge in Mediterranean culinary masterpieces, and soak in breathtaking sea views—all while staying in ultra‑luxurious accommodations.
+      </p>
+
+      <h3>Luxury Accommodations</h3>
+      <ul>
+        <li>
+          <strong>Le Sirenuse, Positano:</strong> Elegantly appointed rooms and mesmerizing Mediterranean views.
+          <br><a href="https://sirenuse.it/" target="_blank">Book Le Sirenuse</a>
+        </li>
+        <li>
+          <strong>Belmond Hotel Caruso, Ravello:</strong> A historic palace with modern luxuries and a spellbinding infinity pool.
+          <br><a href="https://www.belmond.com/hotels/europe/italy/belmond-hotel-caruso/" target="_blank">Book Belmond Hotel Caruso</a>
+        </li>
+        <li>
+          <strong>Palazzo Avino, Ravello:</strong> A restored 12th‑century villa offering lavish rooms, a world‑class spa, and award‑winning dining.
+          <br><a href="https://www.palazzoavino.com/" target="_blank">Book Palazzo Avino</a>
+        </li>
+      </ul>
+
+      <h3>High‑End Dining Experiences</h3>
+      <ul>
+        <li>
+          <strong>La Sponda at Le Sirenuse:</strong> A Michelin‑starred dining experience with candlelit elegance.
+          <br><a href="https://sirenuse.it/en/dining/la-sponda" target="_blank">Discover La Sponda</a>
+        </li>
+        <li>
+          <strong>Rossellinis at Palazzo Avino:</strong> Innovative Mediterranean dishes using the freshest local ingredients.
+          <br><a href="https://www.palazzoavino.com/" target="_blank">Explore Rossellinis</a>
+        </li>
+        <li>
+          <strong>La Caravella, Amalfi:</strong> Refined coastal cuisine in a historic Michelin‑starred setting.
+          <br><a href="https://www.lacaravella.it/" target="_blank">Visit La Caravella</a>
+        </li>
+      </ul>
+
+      <h3>Active & Healthy Experiences</h3>
+      <ul>
+        <li>
+          <strong>Private Amalfi Coast Boat Tour:</strong> Discover hidden coves and secluded beaches on a personalized tour.
+          <br><a href="https://www.viator.com/Amalfi-Coast/d5269-ttd" target="_blank">Book a Boat Tour</a>
+        </li>
+        <li>
+          <strong>Hiking the Path of the Gods:</strong> Trek the legendary Sentiero degli Dei for awe‑inspiring coastal views.
+          <br><a href="https://www.viator.com/tours/Amalfi-Coast/Path-of-the-Gods-Hiking-Tour/d5269-16057P1" target="_blank">Explore the Path of the Gods</a>
+        </li>
+        <li>
+          <strong>Amalfi Coast Cooking & Lemon Grove Tour:</strong> Engage in a hands‑on culinary class amidst fragrant lemon groves.
+          <br><a href="https://www.getyourguide.com/s/?q=amalfi%20cooking%20class" target="_blank">Discover Cooking Classes</a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Ultra-Lux Italy Itinerary for Mike and Mary. All rights reserved.</p>
+    <p>&copy; 2025 Ultra-Lux Italy Itinerary for Mike and Mary.</p>
+    <p>All rights reserved.</p>
   </footer>
 </body>
 </html>
